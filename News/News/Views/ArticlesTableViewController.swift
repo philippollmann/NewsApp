@@ -8,16 +8,20 @@
 import UIKit
 import SDWebImage
 
-class ViewController: UIViewController {
+class ArticlesTableViewController: UIViewController {
     
     var articles: [Article] = []
     @IBOutlet weak var myTableView: UITableView!
+    let refreshControl = UIRefreshControl()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         myTableView.dataSource = self
         myTableView.delegate = self
+        
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        myTableView.refreshControl = refreshControl
         
         NewsController.shared.getNews(completion: { result in
             switch result {
@@ -40,7 +44,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController : UITableViewDataSource, UITableViewDelegate{
+extension ArticlesTableViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return articles.count
@@ -72,5 +76,13 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
         performSegue(withIdentifier: "showArticleDetail", sender: self)
     }
     
+    @objc func refresh(_ sender: AnyObject) {
+        print("refreshed")
+        refreshControl.endRefreshing()
+        
+    }
+    
 }
+
+
 

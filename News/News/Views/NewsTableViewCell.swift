@@ -14,13 +14,6 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet var cellImage: UIImageView!
     @IBOutlet var date: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        cellImage.layer.cornerRadius = 12
-        cellImage.layer.masksToBounds = true
-    }
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
