@@ -52,7 +52,7 @@ class ArticleDetailViewController: UIViewController {
 
     
     @IBAction func readArticleClick(_ sender: Any) {
-        guard let url = URL(string: self.article.url) else { return }
+        guard let url = URL(string: self.article.url ?? "https://www.google.com/") else { return }
         UIApplication.shared.open(url)        
     }
     

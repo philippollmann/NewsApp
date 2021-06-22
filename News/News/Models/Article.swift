@@ -9,14 +9,15 @@ import Foundation
 
 struct Article: Codable {
     let title: String
-    let description: String
-    let content: String
+    let description: String?
+    let content: String?
     let urlToImage: String?
-    let url: String
-    let publishedAt: String
+    let url: String?
+    let publishedAt: String?
     var date: Date? {
         let dateFormatter = ISO8601DateFormatter()
-        return dateFormatter.date(from:publishedAt)
+        guard let dateString = publishedAt else { return Date()}
+        return dateFormatter.date(from: dateString)
     }
     
     enum RootKeys: String, CodingKey {

@@ -11,7 +11,7 @@ final class NewsController {
     
     static let shared = NewsController() //to make it singelton
     private let apiKey: String = "c3632c01fcb4455787c6bb22e9e20595"
-    private let baseUrl: String = "https://newsapi.org/"
+    private let baseUrl: String = "https://newsapi.org/v2/top-headlines"
     private let session = URLSession.shared
     
     public enum NewsControllerErrors: Error {
@@ -21,10 +21,24 @@ final class NewsController {
 
 
 extension NewsController {
-    func getNews(completion: @escaping (Result<[Article], Error>) -> Void){
+    func getNews(filter: Filter, completion: @escaping (Result<[Article], Error>) -> Void){
         
-        let url = URL(string: "\(baseUrl)v2/everything?q=Apple&from=2021-06-14&sortBy=popularity&apiKey=\(apiKey)")
-        if let url = url {
+        var queryItems:[URLQueryItem] = [URLQueryItem(name: "pageSize", value: "100"), URLQueryItem(name: "apiKey", value: apiKey), URLQueryItem(name: "country", value: filter.country.getCountryCode())]
+        
+        if let category = filter.category {
+            queryItems.append(URLQueryItem(name: "category", value: category.rawValue.lowercased()))
+        }
+        
+        if let searchTerm = filter.searchTerm {
+            queryItems.append(URLQueryItem(name: "q", value: searchTerm))
+        }
+        
+        var urlComps = URLComponents(string: baseUrl)!
+        urlComps.queryItems = queryItems
+        let result = urlComps.url
+
+        //let url = URL(string: "\(baseUrl)v2/everything?q=Apple&from=2021-06-14&sortBy=popularity&apiKey=\(apiKey)")
+        if let url = result {
             let taks = session.dataTask(with: url, completionHandler: {data, response, error in
                 print(response?.description ?? "")
                 if let data = data {

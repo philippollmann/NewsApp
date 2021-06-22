@@ -14,6 +14,7 @@ class ArticlesTableViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
     let refreshControl = UIRefreshControl()
     
+    var filter: Filter = Filter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,11 @@ class ArticlesTableViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         myTableView.refreshControl = refreshControl
         
-        NewsController.shared.getNews(completion: { result in
+        self.filter.country = .america
+        self.filter.category = nil
+        self.filter.searchTerm = nil
+        
+        NewsController.shared.getNews(filter: filter, completion: { result in
             switch result {
             case .failure(let error):
                 print("Error: \(error.localizedDescription)")
