@@ -27,6 +27,8 @@ class ArticleDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = .label
+
         
         articleTitle.sizeToFit()
         content.sizeToFit()

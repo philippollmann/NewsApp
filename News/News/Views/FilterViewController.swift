@@ -10,7 +10,7 @@ import MaterialComponents.MaterialChips
 
 
 
-class FilterViewController: UIViewController, UISearchBarDelegate {
+class FilterViewController: UIViewController {
     
     
     @IBOutlet var countryCollectionView: UICollectionView!
@@ -75,9 +75,16 @@ class FilterViewController: UIViewController, UISearchBarDelegate {
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
+}
+
+
+extension FilterViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.filter.searchTerm = searchText
+        self.filter.searchTerm = searchText.trimmingCharacters(in: .whitespaces)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.onFilterButtonClick(self)
     }
 }
 

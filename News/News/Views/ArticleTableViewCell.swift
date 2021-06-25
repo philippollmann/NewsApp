@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewsTableViewCell: UITableViewCell {
+class ArticleTableViewCell: UITableViewCell {
 
     @IBOutlet var view: UIView!
     @IBOutlet var title: UILabel!

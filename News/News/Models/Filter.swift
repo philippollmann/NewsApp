@@ -49,7 +49,7 @@ struct Filter {
         if let category = category {
             rv += " | \(category.rawValue)"
         }
-        if let searchTerm = searchTerm {
+        if let searchTerm = searchTerm, searchTerm.trimmingCharacters(in: .whitespaces).count > 0 {
             rv += " | \(searchTerm.uppercased())"
         }
         return rv

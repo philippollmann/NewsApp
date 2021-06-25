@@ -11,6 +11,7 @@
 		C316F0D02681E126006B8BB0 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C316F0CF2681E126006B8BB0 /* Filter.swift */; };
 		C331F729267A43A900FAE799 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331F728267A43A900FAE799 /* ArticleDetailViewController.swift */; };
 		C353C4ED2685C27B00E46936 /* SwipeArticlesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353C4EC2685C27B00E46936 /* SwipeArticlesCollectionViewController.swift */; };
+		C353C4EF2685DDB000E46936 /* SwipeArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353C4EE2685DDAF00E46936 /* SwipeArticleCollectionViewCell.swift */; };
 		C3772F932677DB6D00258A11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772F922677DB6D00258A11 /* AppDelegate.swift */; };
 		C3772F952677DB6D00258A11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772F942677DB6D00258A11 /* SceneDelegate.swift */; };
 		C3772F972677DB6D00258A11 /* ArticlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772F962677DB6D00258A11 /* ArticlesTableViewController.swift */; };
@@ -20,7 +21,7 @@
 		C3772FA72677DDF600258A11 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772FA62677DDF600258A11 /* Article.swift */; };
 		C3772FAC2677EE0800258A11 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772FAB2677EE0800258A11 /* NewsController.swift */; };
 		C3772FB12677FAE600258A11 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C3772FB02677FAE600258A11 /* SDWebImageSwiftUI */; };
-		C3772FB32677FD0500258A11 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772FB22677FD0500258A11 /* NewsTableViewCell.swift */; };
+		C3772FB32677FD0500258A11 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772FB22677FD0500258A11 /* ArticleTableViewCell.swift */; };
 		C3815C5726808E28001024CD /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3815C5626808E28001024CD /* FilterViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		C316F0CF2681E126006B8BB0 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		C331F728267A43A900FAE799 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		C353C4EC2685C27B00E46936 /* SwipeArticlesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeArticlesCollectionViewController.swift; sourceTree = "<group>"; };
+		C353C4EE2685DDAF00E46936 /* SwipeArticleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeArticleCollectionViewCell.swift; sourceTree = "<group>"; };
 		C3772F8F2677DB6D00258A11 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3772F922677DB6D00258A11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3772F942677DB6D00258A11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,7 +42,7 @@
 		C3772FA02677DB6F00258A11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3772FA62677DDF600258A11 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		C3772FAB2677EE0800258A11 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
-		C3772FB22677FD0500258A11 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		C3772FB22677FD0500258A11 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		C3815C5626808E28001024CD /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		E4EC20A3FD8717808B631853 /* Pods-News.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News.release.xcconfig"; path = "Target Support Files/Pods-News/Pods-News.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,10 +115,11 @@
 			children = (
 				C3772F982677DB6D00258A11 /* Main.storyboard */,
 				C3772F962677DB6D00258A11 /* ArticlesTableViewController.swift */,
-				C3772FB22677FD0500258A11 /* NewsTableViewCell.swift */,
+				C3772FB22677FD0500258A11 /* ArticleTableViewCell.swift */,
 				C331F728267A43A900FAE799 /* ArticleDetailViewController.swift */,
 				C3815C5626808E28001024CD /* FilterViewController.swift */,
 				C353C4EC2685C27B00E46936 /* SwipeArticlesCollectionViewController.swift */,
+				C353C4EE2685DDAF00E46936 /* SwipeArticleCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -259,12 +262,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3772FA72677DDF600258A11 /* Article.swift in Sources */,
-				C3772FB32677FD0500258A11 /* NewsTableViewCell.swift in Sources */,
+				C3772FB32677FD0500258A11 /* ArticleTableViewCell.swift in Sources */,
 				C3815C5726808E28001024CD /* FilterViewController.swift in Sources */,
 				C3772F972677DB6D00258A11 /* ArticlesTableViewController.swift in Sources */,
 				C353C4ED2685C27B00E46936 /* SwipeArticlesCollectionViewController.swift in Sources */,
 				C331F729267A43A900FAE799 /* ArticleDetailViewController.swift in Sources */,
 				C3772F932677DB6D00258A11 /* AppDelegate.swift in Sources */,
+				C353C4EF2685DDB000E46936 /* SwipeArticleCollectionViewCell.swift in Sources */,
 				C3772FAC2677EE0800258A11 /* NewsController.swift in Sources */,
 				C316F0D02681E126006B8BB0 /* Filter.swift in Sources */,
 				C3772F952677DB6D00258A11 /* SceneDelegate.swift in Sources */,
@@ -418,6 +422,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MXML3JQB6;
 				INFOPLIST_FILE = News/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -438,6 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MXML3JQB6;
 				INFOPLIST_FILE = News/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
