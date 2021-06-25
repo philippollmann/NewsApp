@@ -43,4 +43,15 @@ struct Filter {
     var searchTerm: String?
     var country: Countries = .austria
     var category: Categories?
+    
+    func getFilterString() -> String {
+        var rv = country.rawValue
+        if let category = category {
+            rv += " | \(category.rawValue)"
+        }
+        if let searchTerm = searchTerm {
+            rv += " | \(searchTerm.uppercased())"
+        }
+        return rv
+    }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import MaterialComponents
 
 class ArticlesTableViewController: UIViewController {
     
@@ -15,6 +16,7 @@ class ArticlesTableViewController: UIViewController {
     let refreshControl = UIRefreshControl()
     
     var filter: Filter = Filter()
+    @IBOutlet var currFilterLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,10 @@ class ArticlesTableViewController: UIViewController {
         self.filter.category = nil
         self.filter.searchTerm = nil
         
+        updateTableViewWithData()
+    }
+    
+    private func updateTableViewWithData(){
         NewsController.shared.getNews(filter: filter, completion: { result in
             switch result {
             case .failure(let error):
@@ -35,9 +41,22 @@ class ArticlesTableViewController: UIViewController {
             case .success(let articles):
                 self.articles = articles
                 print(articles)
-                DispatchQueue.main.async {self.myTableView.reloadData()}
+                DispatchQueue.main.async {
+                    self.myTableView.reloadData()
+                    self.currFilterLabel.text = self.filter.getFilterString()
+                    
+                }
             }
         })
+    }
+    
+    
+    @IBSegueAction func makeSwipeArticlesCollectionController(_ coder: NSCoder) -> SwipeArticlesCollectionViewController? {
+        return SwipeArticlesCollectionViewController(coder: coder, articles: self.articles)
+    }
+    
+    @IBSegueAction func makeFilterViewController(_ coder: NSCoder) -> FilterViewController? {
+        return FilterViewController(coder: coder, currFilter: self.filter, callBack: applyFilter)
     }
     
     @IBSegueAction func makeArticleDetailController(_ coder: NSCoder) -> ArticleDetailViewController? {
@@ -46,6 +65,13 @@ class ArticlesTableViewController: UIViewController {
         }
         self.myTableView.deselectRow(at: selectedIndexPath, animated: true)
         return ArticleDetailViewController(coder: coder, article: self.articles[selectedIndexPath.row])
+    }
+    
+    func applyFilter(filter: Filter){
+        self.filter = filter
+        print("Filter applied in ArticlesTableViewController: Category: \(filter.category?.rawValue ?? "nil") Country: \(filter.country) SearchTerm: \(filter.searchTerm ?? "nil")")
+        
+        updateTableViewWithData()
     }
 }
 
@@ -60,7 +86,7 @@ extension ArticlesTableViewController : UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "basic", for: indexPath) as! NewsTableViewCell
         
         let article = self.articles[indexPath.row]
-        cell.cellImage.sd_setImage(with: URL(string: article.urlToImage ?? ""), placeholderImage: UIImage(systemName: "search"))
+        cell.cellImage.sd_setImage(with: URL(string: article.urlToImage ?? "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"), placeholderImage: UIImage(systemName: "search"))
         cell.title.text = article.title
         
         let dateFormatter = DateFormatter()
