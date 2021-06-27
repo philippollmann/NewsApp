@@ -34,6 +34,7 @@ class ArticlesTableViewController: UIViewController {
     }
     
     private func updateTableViewWithData(){
+        self.currFilterLabel.text = "LOADING"
         NewsController.shared.getNews(filter: filter, completion: { result in
             switch result {
             case .failure(let error):
